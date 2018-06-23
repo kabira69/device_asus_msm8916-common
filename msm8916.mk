@@ -145,7 +145,6 @@ PRODUCT_PACKAGES += \
     gralloc.msm8916 \
     hwcomposer.msm8916 \
     libgenlock \
-    copybit.msm8916 \
     memtrack.msm8916
 
 # Encryption
