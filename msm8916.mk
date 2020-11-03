@@ -189,8 +189,8 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
 
 # HIDL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+#PRODUCT_COPY_FILES += \
+ #   $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
 
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
