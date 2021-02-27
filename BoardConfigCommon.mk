@@ -203,7 +203,8 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/libflp.so|libshims_flp.so \
     /system/vendor/lib64/libizat_core.so|libshims_get_process_name.so \
     /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so \
-    /system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so
+    /system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so \
+    /system/vendor/lib64/libril-qc-qmi-1.so|libshims_ril.so
 
 # Sp-shim
 TARGET_LD_PRELOAD := \
