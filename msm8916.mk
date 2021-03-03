@@ -437,3 +437,6 @@ PRODUCT_COPY_FILES += \
 
 # Go extras
 PRODUCT_PACKAGES += Launcher3QuickStepGo
+
+# Reduces GC frequency of foreground apps by 50%
+PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.foreground-heap-growth-multiplier=2.0
