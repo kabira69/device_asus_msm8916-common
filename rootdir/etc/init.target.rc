@@ -113,4 +113,3 @@ on post-fs-data
     chmod 0774 /sys/devices/virtual/compass/akm09911/akm_i2c
     chmod 0774 /sys/bus/i2c/devices/0-000f/Gsensor_raw
     chmod 0774 /sys/bus/i2c/devices/0-000f/Gsensor_status
-

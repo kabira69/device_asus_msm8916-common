@@ -136,7 +136,7 @@ TARGET_HAS_NO_POWER_STATS := true
 TARGET_HAS_NO_WLAN_STATS := true
 TARGET_USES_INTERACTION_BOOST := true
 INTERACTION_BOOST := true
-
+TARGET_POWERHAL_HEADER_PATH := $(DEVICE_PATH)/power
 
 # Create Root partitions
 BOARD_ROOT_EXTRA_FOLDERS := firmware persist factory asdf
