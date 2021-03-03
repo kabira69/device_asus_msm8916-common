@@ -114,8 +114,6 @@
    
     <!-- 16-bit screenshots configured -->
     <bool name="config_use16BitTaskSnapshotPixelFormat">true</bool>
-    <item name="config_highResTaskSnapshotScale" format="float" type="dimen">0.8</item>
-    <item name="config_lowResTaskSnapshotScale" format="float"  type="dimen">0.3</item>
 
     <!-- Configuration to restart radio upon PDP_DEACTIVATE with
          error cause as Regular deactivation(36). -->

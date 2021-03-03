@@ -878,6 +878,7 @@ service ppd /vendor/bin/mm-pp-daemon
     user system
     socket pps stream 0660 system system
     group system graphics
+    disabled
 
 service vendor.devstart_sh /vendor/bin/init.qcom.devstart.sh
     class main
