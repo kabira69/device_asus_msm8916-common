@@ -24,5 +24,9 @@
     <!-- Doze: does this device support STATE_DOZE and STATE_DOZE_SUSPEND?  -->
     <bool name="doze_display_state_supported">true</bool>
 
+    <!-- Disable auto dimming -->
+    <bool
+    name="config_navigation_bar_enable_auto_dim_no_visible_wallpaper">false</bool>
+
 </resources>
 
