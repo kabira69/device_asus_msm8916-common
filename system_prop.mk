@@ -26,14 +26,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Audio offload
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.min.duration.secs=30 \
-    audio.offload.pcm.16bit.enable=true \
-    audio.offload.pcm.24bit.enable=true \
     audio.offload.video=true \
     av.offload.enable=true \
-    vendor.audio.av.streaming.offload.enable=false \
+    vendor.audio.av.streaming.offload.enable=true \
     vendor.audio.offload.buffer.size.kb=64 \
-    vendor.audio.offload.gapless.enabled=true \
-    vendor.audio.dolby.ds2.enabled=true
+    vendor.audio.offload.gapless.enabled=true
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
