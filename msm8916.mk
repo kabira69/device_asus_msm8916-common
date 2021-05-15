@@ -139,12 +139,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Dirac
 
+# Disable trace
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.traced.enable=0
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.memtrack@1.0-impl \
@@ -192,15 +195,19 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-impl \
-    android.hardware.health@2.0-service
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
 
 # HIDL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
 
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor \
     android.hidl.manager@1.0
 
 # IMS
@@ -216,10 +223,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     ims-ext-common_system \
     telephony-ext
-
-# Touch HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.asus_8953
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
@@ -241,11 +244,6 @@ PRODUCT_PACKAGES += \
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.asus_8953
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-legacymm \
-    vendor.lineage.livedisplay@2.0-service-sysfs
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -281,7 +279,7 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-im
 
 # Power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service-qti
+    android.hardware.power-service-qti
 
 # Privapp Whitelist
 PRODUCT_COPY_FILES += \
@@ -328,7 +326,12 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
+    libshims_ril \
     libxml2
+
+# Signapk
+PRODUCT_HOST_PACKAGES += \
+    signapk
 
 # Seccomp
 PRODUCT_COPY_FILES += \
