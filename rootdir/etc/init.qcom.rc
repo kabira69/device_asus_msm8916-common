@@ -47,6 +47,8 @@ on early-init
 on init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
 
+    start program_bdaddr
+
     # Configure zram and zswap
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 100
@@ -877,3 +879,9 @@ on property:vold.decrypt=trigger_restart_framework
 
 on property:apexd.status=ready
     mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
+
+service program_bdaddr /system/vendor/bin/init.program_bdaddr.sh
+    user bluetooth
+    group bluetooth
+    disabled
+    oneshot
