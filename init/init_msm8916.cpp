@@ -41,7 +41,7 @@
 #include "vendor_init.h"
 #include "property_service.h"
 
-//using android::base::GetProperty;
+using android::base::GetProperty;
 //using android::base::property_override;
 
 void property_override(char const prop[], char const value[], bool add = true)
@@ -191,17 +191,6 @@ bool is_target_8916()
 
     close(fd);
     return soc_id == 206 || (soc_id >= 247 && soc_id <= 250);
-}
-
-void property_override(char const prop[], char const value[])
-{
-    prop_info *pi;
-
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
-        __system_property_update(pi, value, strlen(value));
-    else
-        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
 void property_override_triple(char const product_prop[], char const system_prop[], char const vendor_prop[], char const value[])
