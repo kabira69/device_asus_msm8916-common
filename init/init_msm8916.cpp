@@ -44,6 +44,8 @@
 using android::base::GetProperty;
 //using android::base::property_override;
 
+void property_override(char const prop[], char const value[], bool add = true)
+
 char const *device;
 char const *family;
 char const *heapstartsize;
