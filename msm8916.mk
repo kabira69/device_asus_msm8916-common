@@ -304,7 +304,6 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     init.qcom.devstart.sh \
-    init.program_bdaddr.sh \
     ueventd.qcom.rc
 
 # IRQ balance
