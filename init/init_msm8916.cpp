@@ -42,7 +42,7 @@
 #include "property_service.h"
 
 using android::base::GetProperty;
-using android::base::SetProperty;
+//using android::base::property_override;
 
 char const *device;
 char const *family;
@@ -162,7 +162,7 @@ static void init_alarm_boot_properties()
      * 7 -> CBLPWR_N pin toggled (for external power supply)
      * 8 -> KPDPWR_N pin toggled (power key pressed)
      */
-    SetProperty("ro.alarm_boot", boot_reason == 3 ? "true" : "false");
+    property_override("ro.alarm_boot", boot_reason == 3 ? "true" : "false");
 }
 
 bool is_target_8916()
@@ -211,7 +211,7 @@ void vendor_load_properties()
         return;
 
     // Init a dummy BT MAC address, will be overwritten later
-    SetProperty("ro.boot.btmacaddr", "00:00:00:00:00:00");
+    property_override("ro.boot.btmacaddr", "00:00:00:00:00:00");
     property_override("ro.debuggable", "0");
     property_override_triple("ro.build.type", "ro.system.build.type", "ro.vendor.build.type", "user");	
     property_override_triple("ro.build.tags", "ro.system.build.tags", "ro.vendor.build.tags", "release-keys");
@@ -230,16 +230,16 @@ void vendor_load_properties()
     property_override_triple("ro.product.device", "ro.product.system.device", "ro.product.vendor.device", p_device);
     property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", p_model);
 
-    SetProperty("dalvik.vm.heapstartsize", heapstartsize);
-    SetProperty("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    SetProperty("dalvik.vm.heapsize", heapsize);
-    SetProperty("dalvik.vm.heaptargetutilization", "0.75");
-    SetProperty("dalvik.vm.heapminfree", heapminfree);
-    SetProperty("dalvik.vm.heapmaxfree", "8m");
+    property_override("dalvik.vm.heapstartsize", heapstartsize);
+    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+    property_override("dalvik.vm.heapsize", heapsize);
+    property_override("dalvik.vm.heaptargetutilization", "0.75");
+    property_override("dalvik.vm.heapminfree", heapminfree);
+    property_override("dalvik.vm.heapmaxfree", "8m");
 
     if (is_target_8916()) {
-        SetProperty("ro.opengles.version", "196608");
+        property_override("ro.opengles.version", "196608");
     } else {
-        SetProperty("ro.opengles.version", "196610");
+        property_override("ro.opengles.version", "196610");
     }	
 }
