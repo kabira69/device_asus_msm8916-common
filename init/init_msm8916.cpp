@@ -41,10 +41,18 @@
 #include "vendor_init.h"
 #include "property_service.h"
 
-using android::base::GetProperty;
+//using android::base::GetProperty;
 //using android::base::property_override;
 
 void property_override(char const prop[], char const value[], bool add = true)
+{
+    auto pi = (prop_info *) __system_property_find(prop);
+    if (pi != nullptr) {
+        __system_property_update(pi, value, strlen(value));
+    } else if (add) {
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+    }
+}
 
 char const *device;
 char const *family;
