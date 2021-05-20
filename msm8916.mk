@@ -447,3 +447,10 @@ PRODUCT_COPY_FILES += \
 # VNDK
 PRODUCT_COPY_FILES += \
    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libprotobuf-cpp-lite-v29.so
+
+# Disable psi monitors
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lmk.use_psi=false
+
+# Reduces GC frequency of foreground apps by 50%
+PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.foreground-heap-growth-multiplier=2.0
