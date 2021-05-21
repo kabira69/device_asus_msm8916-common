@@ -161,6 +161,9 @@ PRODUCT_PACKAGES += \
     copybit.msm8916 \
     memtrack.msm8916
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196608
+
 # Encryption
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
