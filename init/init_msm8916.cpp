@@ -42,17 +42,7 @@
 #include "property_service.h"
 
 using android::base::GetProperty;
-//using android::base::property_override;
-
-void property_override(char const prop[], char const value[], bool add = true)
-{
-    auto pi = (prop_info *) __system_property_find(prop);
-    if (pi != nullptr) {
-        __system_property_update(pi, value, strlen(value));
-    } else if (add) {
-        __system_property_add(prop, strlen(prop), value, strlen(value));
-    }
-}
+using android::base::SetProperty;
 
 char const *device;
 char const *family;
@@ -172,7 +162,7 @@ static void init_alarm_boot_properties()
      * 7 -> CBLPWR_N pin toggled (for external power supply)
      * 8 -> KPDPWR_N pin toggled (power key pressed)
      */
-    property_override("ro.alarm_boot", boot_reason == 3 ? "true" : "false");
+    SetProperty("ro.alarm_boot", boot_reason == 3 ? "true" : "false");
 }
 
 bool is_target_8916()
@@ -193,9 +183,19 @@ bool is_target_8916()
     return soc_id == 206 || (soc_id >= 247 && soc_id <= 250);
 }
 
-void property_override_triple(char const product_prop[], char const system_prop[], char const vendor_prop[], char const value[])
+void property_override(char const prop[], char const value[])
 {
-    property_override(product_prop, value);
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+{
     property_override(system_prop, value);
     property_override(vendor_prop, value);
 }
@@ -209,10 +209,9 @@ void vendor_load_properties()
     if (platform != ANDROID_TARGET)
         return;
 
-    // Init a dummy BT MAC address, will be overwritten later
     property_override("ro.debuggable", "0");
-    property_override_triple("ro.build.type", "ro.system.build.type", "ro.vendor.build.type", "user");	
-    property_override_triple("ro.build.tags", "ro.system.build.tags", "ro.vendor.build.tags", "release-keys");
+    property_override_dual("ro.build.type", "ro.vendor.build.type", "user");	
+    property_override_dual("ro.build.tags", "ro.vendor.build.tags", "release-keys");
     check_device();
     init_alarm_boot_properties();
 
@@ -222,22 +221,22 @@ void vendor_load_properties()
     sprintf(p_device, "ASUS_%s", device);
     sprintf(p_carrier, "US-ASUS_%s-WW_%s", device, device);
 
-    property_override_triple("ro.build.description", "ro.system.build.description", "ro.vendor.description", b_description);
+    property_override_dual("ro.build.description", "ro.vendor.description", b_description);
     property_override("ro.product.carrier", p_carrier);
-    property_override_triple("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.vendor.build.fingerprint", b_fingerprint);
-    property_override_triple("ro.product.device", "ro.product.system.device", "ro.product.vendor.device", p_device);
-    property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", p_model);
+    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", b_fingerprint);
+    property_override_dual("ro.product.device", "ro.vendor.product.device", p_device);
+    property_override_dual("ro.product.model", "ro.vendor.product.model", p_model);
 
-    property_override("dalvik.vm.heapstartsize", heapstartsize);
-    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_override("dalvik.vm.heapsize", heapsize);
-    property_override("dalvik.vm.heaptargetutilization", "0.75");
-    property_override("dalvik.vm.heapminfree", heapminfree);
-    property_override("dalvik.vm.heapmaxfree", "8m");
+    SetProperty("dalvik.vm.heapstartsize", heapstartsize);
+    SetProperty("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+    SetProperty("dalvik.vm.heapsize", heapsize);
+    SetProperty("dalvik.vm.heaptargetutilization", "0.75");
+    SetProperty("dalvik.vm.heapminfree", heapminfree);
+    SetProperty("dalvik.vm.heapmaxfree", "8m");
 
     if (is_target_8916()) {
-        property_override("ro.opengles.version", "196608");
+        SetProperty("ro.opengles.version", "196608");
     } else {
-        property_override("ro.opengles.version", "196610");
+        SetProperty("ro.opengles.version", "196610");
     }	
 }
