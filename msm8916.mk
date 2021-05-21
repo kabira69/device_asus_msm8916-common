@@ -17,6 +17,9 @@
 # inherit from the proprietary version
 $(call inherit-product, vendor/asus/msm8916-common/msm8916-common-vendor.mk)
 
+# Dalvik
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
