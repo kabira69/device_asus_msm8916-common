@@ -464,3 +464,7 @@ PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.foreground-heap-growth-multiplier=2.0
 
 # Boot Animtion
 TARGET_BOOTANIMATION_HALF_RES := true
+
+# Smooth Streaming for Video Playback
+PRODUCT_PROPERTY_OVERRIDES += \
+     mm.enable.sec.smoothstreaming=true
