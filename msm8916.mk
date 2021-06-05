@@ -461,3 +461,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Reduces GC frequency of foreground apps by 50%
 PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.foreground-heap-growth-multiplier=2.0
+
+# Boot Animtion
+TARGET_BOOTANIMATION_HALF_RES := true
