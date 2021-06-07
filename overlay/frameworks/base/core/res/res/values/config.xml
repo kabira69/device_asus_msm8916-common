@@ -199,9 +199,9 @@
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
-        <item>3</item>
+        <item>2</item>
+        <item>15</item>
         <item>20</item>
-        <item>23</item>
     </integer-array>
 
     <!-- Configure mobile tcp buffer sizes in the form:
