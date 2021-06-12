@@ -445,3 +445,6 @@ PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.foreground-heap-growth-multiplier=2.0
 # Disable psi monitors
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.use_psi=false
+
+# Dalvik
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
