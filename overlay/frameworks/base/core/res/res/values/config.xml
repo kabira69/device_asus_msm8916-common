@@ -407,4 +407,6 @@
 
     <bool name="config_avoidGfxAccel">true</bool>
 
+    <bool name="config_sf_limitedAlpha">true</bool>
+
 </resources>
