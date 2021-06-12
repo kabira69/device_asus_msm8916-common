@@ -448,3 +448,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196608
