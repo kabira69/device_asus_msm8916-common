@@ -452,3 +452,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608
+
+# Smooth Streaming for Video Playback
+PRODUCT_PROPERTY_OVERRIDES += \
+     mm.enable.sec.smoothstreaming=true
