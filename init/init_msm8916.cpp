@@ -42,7 +42,7 @@
 #include "property_service.h"
 
 using android::base::GetProperty;
-//using android::base::SetProperty;
+using android::base::SetProperty;
 
 char const *device;
 char const *family;
@@ -162,7 +162,7 @@ static void init_alarm_boot_properties()
      * 7 -> CBLPWR_N pin toggled (for external power supply)
      * 8 -> KPDPWR_N pin toggled (power key pressed)
      */
-    property_override("ro.alarm_boot", boot_reason == 3 ? "true" : "false");
+    SetProperty("ro.alarm_boot", boot_reason == 3 ? "true" : "false");
 }
 
 bool is_target_8916()
@@ -209,6 +209,8 @@ void vendor_load_properties()
     if (platform != ANDROID_TARGET)
         return;
 
+    // Init a dummy BT MAC address, will be overwritten later
+    SetProperty("ro.boot.btmacaddr", "00:00:00:00:00:00");
     property_override("ro.debuggable", "0");
     property_override_dual("ro.build.type", "ro.vendor.build.type", "user");	
     property_override_dual("ro.build.tags", "ro.vendor.build.tags", "release-keys");
@@ -227,16 +229,16 @@ void vendor_load_properties()
     property_override_dual("ro.product.device", "ro.vendor.product.device", p_device);
     property_override_dual("ro.product.model", "ro.vendor.product.model", p_model);
 
-    property_override("dalvik.vm.heapstartsize", heapstartsize);
-    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_override("dalvik.vm.heapsize", heapsize);
-    property_override("dalvik.vm.heaptargetutilization", "0.75");
-    property_override("dalvik.vm.heapminfree", heapminfree);
-    property_override("dalvik.vm.heapmaxfree", "8m");
+    SetProperty("dalvik.vm.heapstartsize", heapstartsize);
+    SetProperty("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+    SetProperty("dalvik.vm.heapsize", heapsize);
+    SetProperty("dalvik.vm.heaptargetutilization", "0.75");
+    SetProperty("dalvik.vm.heapminfree", heapminfree);
+    SetProperty("dalvik.vm.heapmaxfree", "8m");
 
     if (is_target_8916()) {
-        property_override("ro.opengles.version", "196608");
+        SetProperty("ro.opengles.version", "196608");
     } else {
-        property_override("ro.opengles.version", "196610");
+        SetProperty("ro.opengles.version", "196610");
     }	
 }
