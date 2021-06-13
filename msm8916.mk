@@ -227,10 +227,6 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-service \
     android.hardware.authsecret@1.0-service
 
-# Keystore
-PRODUCT_PACKAGES += \
-    keystore.msm8916
-
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.asus_8953
