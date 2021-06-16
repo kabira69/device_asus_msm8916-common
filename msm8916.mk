@@ -266,7 +266,8 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-im
 # Power HAL
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti \
-    vendor.qti.hardware.perf@2.0
+    vendor.qti.hardware.perf@2.0 \
+    vendor.qti.hardware.perf@2.0.vendor
 
 # Privapp Whitelist
 PRODUCT_COPY_FILES += \
