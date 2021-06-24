@@ -725,6 +725,7 @@ service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
    socket ims_rtpd stream 0660 system radio
    group radio net_raw diag diag inet log
    disabled
+    writepid /dev/cpuset/system-background/tasks
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
     start vendor.ims_rtp_daemon
@@ -807,6 +808,7 @@ service charger /system/bin/charger
     group system graphics input
     capabilities SYS_BOOT
     seclabel u:r:charger:s0
+    writepid /dev/cpuset/camera-daemon/tasks
 
 service vm_bms /vendor/bin/vm_bms
     class main
@@ -881,6 +883,7 @@ service wcnss-service /vendor/bin/wcnss_service
     user system
     group system wifi radio
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 service qcom-power /vendor/bin/init.qcom.power.sh
     disabled
